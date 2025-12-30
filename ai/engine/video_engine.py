@@ -1,18 +1,36 @@
 import cv2
-import numpy as np
 from ultralytics import YOLO
 import time
 
+pothole_model = YOLO('potholeV2.pt')
+road_model = YOLO('roadV1.pt')
+
 def analyze_video(video_path):
-    print(f"processing video: {video_path}")
-    print("laoading models...")
-    
-    pothole_model = YOLO('potholeV2.pt') 
-    road_model = YOLO('roadV1.pt')      
+    print(f"Processing video: {video_path}")
+    print("Loading models...")
 
     cap = cv2.VideoCapture(video_path)
     
+    if not cap.isOpened():
+        print("Error: Could not open video file.")
+        return -1, -1
+
+    fps = cap.get(cv2.CAP_PROP_FPS)
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    
+    
+    if fps > 0:
+        duration = total_frames / fps
+    else:
+        duration = 0
+        
+    print(f"Video Duration: {duration:.2f} seconds")
+    
+    if duration > 10:
+        print("Error: Video duration exceeds 10 seconds limit.")
+        cap.release()
+        return -1, -1
+
     print(f"total frames to process: {total_frames}")
 
     line_position = 0.65 
@@ -89,14 +107,6 @@ def analyze_video(video_path):
     end_time = time.time()
     print(f"\nProcessing Complete in {end_time - start_time:.2f} secss")
     
-    return len(counted_ids), total_score
-
-if __name__ == "__main__":
-    video_path = r"/Users/krishna/Desktop/Pothole Project Hackathon/testtt.mp4"
-    
-    count, score = analyze_video(video_path)
-    
-    print("-" * 30)
-    print(f"FINAL COUNT: {count}")
-    print(f"FINAL SCORE: {score}")
-    print("-" * 30)
+    return {
+        'Pothole Count': len(counted_ids),
+        'Severity Score': total_score}
