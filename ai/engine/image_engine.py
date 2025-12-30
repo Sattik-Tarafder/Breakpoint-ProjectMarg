@@ -90,14 +90,10 @@ def analyze_image(image_path, output_path='output.jpg', conf_road=0.2, conf_poth
         density_score = min(pothole_density / DENSITY_MAX, 1.0)
         severity_score = int(100 * (0.4 * density_score + 0.6 * boost))
 
-        cv2.imwrite(output_path, image)
+        #cv2.imwrite(output_path, image)
     return {
         'Pothole Count': pothole_count,
         'Road Area': int(road_area),
         'Pothole Area': int(pothole_area),
         'Severity Score': severity_score
     }
-    
-if __name__ == "__main__":
-    results = analyze_image('test_samples/original.jpg', output_path='outputV2.jpg')
-    print(results)
