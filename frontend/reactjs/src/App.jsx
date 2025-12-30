@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="navbar">
-      <div className="logo">Road<span>Intel</span></div>
+      <div className="logo">Project<span>M@rG</span></div>
       <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>☰</div>
       <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><a href="#home" onClick={() => setIsOpen(false)}>Home</a></li>
@@ -26,9 +26,9 @@ const Hero = () => {
   const [status, setStatus] = useState('');
   const [progress, setProgress] = useState(0);
 
-  const uploadUrl = import.meta.env.VITE_API_UPLOAD_URL || 'http://localhost:3000/api/v1/map/setcondition';
+  const uploadUrl = import.meta.env.VITE_API_UPLOAD_URL || 'https://backend-aezl.onrender.com/api/v1/map/setcondition';
 
-  // Modal & pending upload state
+  
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [pendingFile, setPendingFile] = useState(null);
   const [pendingMediaType, setPendingMediaType] = useState(null);
@@ -228,7 +228,7 @@ const MapSection = () => {
 
   
   const fetchRoadData = (lat, lng, map) => {
-    const apiUrl = 'http://localhost:3000/api/v1/map/get';
+    const apiUrl = 'https://backend-aezl.onrender.com/api/v1/map/get';
     const payload = { centerLocation: [lat, lng] };
 
     axios.post(apiUrl, payload)
