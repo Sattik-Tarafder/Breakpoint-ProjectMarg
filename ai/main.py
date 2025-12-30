@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     if input_type == "image":
         analyze_image(input, output_path=output_path, conf_road=0.2, conf_pothole=0.2)
-    if input_type == "video":
+    elif input_type == "video":
         analyze_video(input)
     else:
         print("Invalid input type. Use 'image' or 'video'.")
