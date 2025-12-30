@@ -226,7 +226,7 @@ const MapSection = () => {
   const [isLocating, setIsLocating] = useState(false);
   const [mapCenter, setMapCenter] = useState({ lat: 22.97, lng: 88.43 });
 
-  // --- Fetch Data using Axios ---
+  
   const fetchRoadData = (lat, lng, map) => {
     const apiUrl = 'http://localhost:3000/api/v1/map/get';
     const payload = { centerLocation: [lat, lng] };
@@ -238,7 +238,7 @@ const MapSection = () => {
         if (data.success && Array.isArray(data.roads)) {
           processStreetsData(data.roads, map);
         } else {
-          // If success is true but roads is empty, clear the map
+         
           if (markersLayerRef.current) {
             markersLayerRef.current.clearLayers();
           }
@@ -247,13 +247,12 @@ const MapSection = () => {
       .catch(error => {
         console.error("❌ API Failed, clearing map...");
 
-        // THIS IS THE FIX: Remove old lines if the request fails
+        
         if (markersLayerRef.current) {
           markersLayerRef.current.clearLayers();
         }
 
-        // Optional: alert the user or log the status
-        // if(error.response?.status === 410) console.log("No city found here");
+        
       });
   };
   useEffect(() => {
@@ -273,7 +272,7 @@ const MapSection = () => {
 
       markersLayerRef.current = L.layerGroup().addTo(map);
 
-      // Fetch new data when user stops moving the map
+      
       map.on('moveend', () => {
         if (!isMounted) return;
         const newCenter = map.getCenter();
@@ -281,7 +280,7 @@ const MapSection = () => {
         fetchRoadData(newCenter.lat, newCenter.lng, map);
       });
 
-      // Initial fetch
+     
       fetchRoadData(22.97, 88.43, map);
     }
 
