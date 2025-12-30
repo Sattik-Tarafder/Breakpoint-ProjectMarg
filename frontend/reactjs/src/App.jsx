@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 import './App.css';
 
-// --- Components ---
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -300,7 +300,7 @@ const MapSection = () => {
 
     markersLayerRef.current.clearLayers();
 
-    // Helper function to determine color based on condition score
+    
     const getConditionColor = (condition) => {
       const score = Number(condition);
       if (score <= 33) return '#ff4d4d'; // Red (Poor)
@@ -311,16 +311,16 @@ const MapSection = () => {
     roads.forEach((road) => {
       if (!road.coordinates || road.coordinates.length < 2) return;
 
-      // Determine the color for this specific road segment
+      
       const roadColor = getConditionColor(road.condition);
 
-      // API: [Lng, Lat] -> Leaflet: [Lat, Lng]
+      
       const polylinePoints = road.coordinates.map(coord => [coord[1], coord[0]]);
 
-      // Draw Polyline with dynamic color
+      
       L.polyline(polylinePoints, {
-        color: roadColor, // Dynamic Color applied here
-        weight: 7,        // Increased weight for better visibility
+        color: roadColor, 
+        weight: 7,        
         opacity: 0.8,
         lineJoin: 'round'
       }).addTo(markersLayerRef.current)
@@ -330,7 +330,7 @@ const MapSection = () => {
         Condition Score: <strong>${road.condition}%</strong>
       `);
 
-      // Add dots at start/end with matching colors
+      
       const markerOptions = {
         radius: 5,
         fillColor: roadColor,

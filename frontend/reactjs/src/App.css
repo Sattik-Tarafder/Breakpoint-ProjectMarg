@@ -57,7 +57,7 @@ body {
     padding-top: 100px;
     padding-bottom: 50px;
     
-    /* --- FIX IS HERE: Added a dot (.) to look in the src folder --- */
+    
     background: url('./pothole.webp'); 
     
     background-size: cover;
