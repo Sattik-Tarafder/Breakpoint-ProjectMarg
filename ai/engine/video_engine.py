@@ -2,8 +2,8 @@ import cv2
 from ultralytics import YOLO
 import time
 
-pothole_model = YOLO('potholeV2.pt')
-road_model = YOLO('roadV1.pt')
+pothole_model = YOLO('models/pothole.pt')
+road_model = YOLO('models/road.pt')
 
 def analyze_video(video_path):
     print(f"Processing video: {video_path}")

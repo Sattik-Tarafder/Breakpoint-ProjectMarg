@@ -4,8 +4,8 @@ import numpy as np
 from math import sqrt
 
 
-road_model = YOLO('models/roadV1.pt')
-pothole_model = YOLO('models/potholeV2.pt')
+road_model = YOLO('models/road.pt')
+pothole_model = YOLO('models/pothole.pt')
 
 
 def analyze_image(image_path, output_path='output.jpg', conf_road=0.2, conf_pothole=0.2):
