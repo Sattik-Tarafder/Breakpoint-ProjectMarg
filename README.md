@@ -39,9 +39,9 @@ This turns raw road footage into **actionable data**.
 
 ## Links
 
--  **Frontend URL**: https://your-frontend-link.com  
--  **Demo Video**: https://your-demo-video-link.com  
--  **Documentation**: https://your-documentation-link.com  
+-  **Frontend URL**: [Frontend](https://spiffy-crisp-ad0ee7.netlify.app/) 
+-  **Demo Video**: [Video](https://drive.google.com/drive/folders/1UiayVwdhYnKDqA6XS_5v9Mv63rG6dEUQ?usp=drive_link)
+-  **Documentation**: [Doc](https://deepbaidya.notion.site/Project-Marg-2d96a533ff0d8022a32af36b7b2583a4?source=copy_link)  
 
 ---
 
