@@ -10,7 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <nav className="navbar">
-      <div className="logo">Project<span>M@rG</span></div>
+      <div className="logo">Project<span>Marg</span></div>
       <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>☰</div>
       <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><a href="#home" onClick={() => setIsOpen(false)}>Home</a></li>
@@ -392,7 +392,7 @@ const WhySection = () => {
   return (
     <section id="why-section" className="why-section">
       <div className="section-header pre-reveal">
-        <h2 className="section-title">Why <span>RoadIntel</span>?</h2>
+        <h2 className="section-title">Why <span>ProjectMarg</span>?</h2>
       </div>
       <div className="why-grid">
         {cards.map((card, index) => (
@@ -408,7 +408,7 @@ const WhySection = () => {
 };
 
 const Footer = () => (
-  <footer><p>© {new Date().getFullYear()} RoadIntel | Hackathon Project</p></footer>
+  <footer><p>© {new Date().getFullYear()} ProjectMarg | Hackathon Project</p></footer>
 );
 
 function App() {
