@@ -2,8 +2,8 @@ import cv2
 from ultralytics import YOLO
 import time
 
-pothole_model = YOLO('models/pothole.pt')
-road_model = YOLO('models/road.pt')
+pothole_model = YOLO('../models/pothole.pt')
+road_model = YOLO('../models/road.pt')
 
 def analyze_video(video_path):
     print(f"Processing video: {video_path}")
@@ -110,3 +110,7 @@ def analyze_video(video_path):
     return {
         'Pothole Count': len(counted_ids),
         'Severity Score': total_score}
+
+if __name__ == "__main__":
+    video_results = analyze_video("video.mp4")
+    print(video_results)
